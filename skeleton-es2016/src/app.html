@@ -2,7 +2,15 @@
   <require from="nav-bar.html"></require>
   <require from="bootstrap/css/bootstrap.css"></require>
 
-  <nav-bar router.bind="router"></nav-bar>
+  <ul class="nav navbar-nav">
+        <li repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
+          <a data-toggle="collapse" data-target="#skeleton-navigation-navbar-collapse.in" href.bind="row.href">${row.title}</a>
+        </li>
+
+        <li repeat.for="tab of openTabs">
+          <a data-toggle="collapse" data-target="#skeleton-navigation-navbar-collapse.in" href.bind="tab.route">${tab.title}</a>
+        </li>
+      </ul>
 
   <div class="page-host">
     <router-view></router-view>
